@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
-  devise_for :users, only: [:api]
+  namespace :v1 do
+    devise_for :users, only: [:api]
+  end
 end

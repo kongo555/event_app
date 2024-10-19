@@ -15,7 +15,7 @@ To authenticate your request, you will need to provide a header `'Authorization:
 ### Example
 ```
 # Request
-curl --location --request POST 'http://127.0.0.1:3000/users/tokens/sign_up' \
+curl --location --request POST 'http://127.0.0.1:3000/v1/users/tokens/sign_up' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "email": "test@mail.com",
@@ -48,7 +48,7 @@ curl --location --request POST 'http://127.0.0.1:3000/users/tokens/sign_up' \
 ### Example
 ```
 # Request
-curl --location --request POST 'http://127.0.0.1:3000/users/tokens/sign_in' \
+curl --location --request POST 'http://127.0.0.1:3000/v1/users/tokens/sign_in' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "email": "test@mail.com",
