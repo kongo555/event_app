@@ -1,0 +1,7 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+not_full:
+  name: MyString
+  start_at: 2024-10-19 07:29:42
+  capacity: 10
+

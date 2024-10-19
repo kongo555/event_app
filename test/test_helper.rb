@@ -11,5 +11,6 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+    set_fixture_class :devise_api_tokens => Devise::Api::Token
   end
 end
