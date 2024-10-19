@@ -1,2 +1,6 @@
 user:
   email: user@mail.com
+
+admin:
+  email: admin@mail.com
+  admin: true

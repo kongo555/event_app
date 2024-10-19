@@ -1,6 +1,7 @@
 class V1::EventsController < ApplicationController
   skip_before_action :authenticate_devise_api_token!, only: :index
   before_action :set_event, only: %i[ show update destroy ]
+  before_action :check_if_admin, except: :index
 
   # GET /events
   def index
@@ -16,7 +17,6 @@ class V1::EventsController < ApplicationController
 
   # POST /events
   def create
-    puts params
     @event = Event.new(event_params)
 
     if @event.save

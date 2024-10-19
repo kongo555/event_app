@@ -11,8 +11,25 @@ class V1::EventsControllerTest < ActionDispatch::IntegrationTest
     assert_equal response.parsed_body.size, Event.count
   end
 
-  test "should show event" do
+  test "should check authorization" do
     token = devise_api_tokens(:user)
+    headers = { Authorization: "Bearer #{token.access_token}" }
+
+    post v1_events_url(@event), headers: headers, as: :json
+    assert_response :unauthorized
+
+    get v1_event_url(@event), headers: headers, as: :json
+    assert_response :unauthorized
+
+    patch v1_event_url(@event), headers: headers, as: :json
+    assert_response :unauthorized
+
+    delete v1_event_url(@event), headers: headers, as: :json
+    assert_response :unauthorized
+  end
+
+  test "should show event" do
+    token = devise_api_tokens(:admin)
     get v1_event_url(@event),
       headers: { Authorization: "Bearer #{token.access_token}" },
       as: :json
@@ -21,7 +38,7 @@ class V1::EventsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create event" do
-    token = devise_api_tokens(:user)
+    token = devise_api_tokens(:admin)
 
     assert_difference("Event.count") do
       post v1_events_url, 
@@ -40,7 +57,7 @@ class V1::EventsControllerTest < ActionDispatch::IntegrationTest
     capacity = 66
     name = "New Event"
     start_at = 5.days.from_now.beginning_of_hour
-    token = devise_api_tokens(:user)
+    token = devise_api_tokens(:admin)
     patch v1_event_url(@event),
       headers: { Authorization: "Bearer #{token.access_token}" },
       params: { event: { capacity: capacity, name: name, start_at: start_at } },
@@ -53,7 +70,7 @@ class V1::EventsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy event" do
-    token = devise_api_tokens(:user)
+    token = devise_api_tokens(:admin)
     assert_difference("Event.count", -1) do
       delete v1_event_url(@event),
         headers: { Authorization: "Bearer #{token.access_token}" },

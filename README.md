@@ -6,6 +6,9 @@ To authenticate your request, you will need to provide a header `'Authorization:
 ## Sign up
 `POST v1/users/tokens/sign_in`
 
+### Authorization
+not needed
+
 ### Body
 | key      | type   |
 | -------- | ------ |
@@ -38,6 +41,9 @@ curl --location --request POST 'http://127.0.0.1:3000/v1/users/tokens/sign_up' \
 
 ## Sign in
 `POST v1/users/tokens/sign_in`
+
+### Authorization
+not needed
 
 ### Body
 | key      | type   |
@@ -72,6 +78,9 @@ curl --location --request POST 'http://127.0.0.1:3000/v1/users/tokens/sign_in' \
 ## List all events
 `GET v1/events`
 
+### Authorization
+not needed
+
 ### Body
 empty
 
@@ -96,6 +105,9 @@ curl --location --request GET 'http://127.0.0.1:3000/v1/events'
 ## Get event
 `GET v1/events/{event_id}`
 
+### Authorization
+admin
+
 ### Body
 empty
 
@@ -118,6 +130,9 @@ curl --location --request GET 'http://127.0.0.1:3000/v1/events/1' \
 
 ## Create event
 `POST v1/events/`
+
+### Authorization
+admin
 
 ### Body
 | key      | type     |
@@ -154,6 +169,9 @@ curl --location --request POST 'http://127.0.0.1:3000/v1/events' \
 ## Update event
 `PUT v1/events/{event_id}`
 
+### Authorization
+admin
+
 ### Body
 | key      | type     |
 | -------- | ------   |
@@ -188,6 +206,9 @@ curl --location --request PUT 'http://127.0.0.1:3000/v1/events/1' \
 
 ## Delete event
 `DELETE v1/events/{event_id}`
+
+### Authorization
+admin
 
 ### Body
 empty
