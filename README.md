@@ -115,7 +115,7 @@ empty
 ```
 # Request
 curl --location --request GET 'http://127.0.0.1:3000/v1/events/1' \
---header 'Authorization: Bearer <access_token>'
+--header 'Authorization: Bearer <token>'
 
 # Response
 {
@@ -154,7 +154,7 @@ admin
 ```
 # Request
 curl --location --request POST 'http://127.0.0.1:3000/v1/events' \
---header 'Authorization: Bearer <access_token>' \
+--header 'Authorization: Bearer <token>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "event": {
@@ -192,7 +192,7 @@ admin
 ```
 # Request
 curl --location --request PUT 'http://127.0.0.1:3000/v1/events/1' \
---header 'Authorization: Bearer <access_token>' \
+--header 'Authorization: Bearer <token>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "event": {
@@ -226,7 +226,7 @@ empty
 ```
 # Request
 curl --location --request DELETE 'http://127.0.0.1:3000/v1/events/1' \
---header 'Authorization: Bearer <access_token>'
+--header 'Authorization: Bearer <token>'
 
 # Response
 {
@@ -252,7 +252,7 @@ empty
 ```
 # Request
 curl --location --request GET 'http://127.0.0.1:3000/v1/participants' \
---header 'Authorization: Bearer <access_token>'
+--header 'Authorization: Bearer <token>'
 
 # Response
 [
@@ -268,7 +268,7 @@ curl --location --request GET 'http://127.0.0.1:3000/v1/participants' \
 ```
 
 ## Join event
-`POST v1/participants/{event_id}`
+`POST v1/participants`
 
 ### Authorization
 not needed
@@ -280,7 +280,7 @@ empty
 ```
 # Request
 curl --location --request POST 'http://127.0.0.1:3000/v1/participants' \
---header 'Authorization: Bearer <access_token>' \
+--header 'Authorization: Bearer <token>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "id": "1"
