@@ -16,7 +16,7 @@ class V1::ParticipantsControllerTest < ActionDispatch::IntegrationTest
     assert_difference("Participant.count") do
       post v1_participants_url,
         headers: { Authorization: "Bearer #{token.access_token}" },
-        params: { id: event.id },
+        params: { event_id: event.id },
         as: :json
     end
 

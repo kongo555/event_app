@@ -4,7 +4,7 @@ class V1::ParticipantsController < ApplicationController
   end
 
   def create
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:event_id])
     @participant = Participant.new(event: @event, user: current_user)
 
     if @participant.save

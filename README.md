@@ -274,7 +274,9 @@ curl --location --request GET 'http://127.0.0.1:3000/v1/participants' \
 not needed
 
 ### Body
-empty
+| key      | type     |
+| -------- | ------   |
+| event_id | integer  |
 
 ### Example
 ```
@@ -283,7 +285,7 @@ curl --location --request POST 'http://127.0.0.1:3000/v1/participants' \
 --header 'Authorization: Bearer <token>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "id": "1"
+    "event_id": "1"
 }'
 
 # Response
