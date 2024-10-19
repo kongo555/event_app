@@ -8,7 +8,7 @@ class V1::ParticipantsController < ApplicationController
     @participant = Participant.new(event: @event, user: current_user)
 
     if @participant.save
-      render json: @event, status: :created, location: v1_events_url(@event)
+      render json: @event, status: :created
     else
       render json: @participant.errors, status: :unprocessable_entity
     end

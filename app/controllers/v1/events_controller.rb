@@ -21,7 +21,7 @@ class V1::EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
-      render json: @event, status: :created, location: v1_events_url(@event)
+      render json: @event, status: :created
     else
       render json: @event.errors, status: :unprocessable_entity
     end
