@@ -10,4 +10,6 @@ class Participant < ApplicationRecord
       raise ActiveRecord::RecordInvalid.new(self)
     end
   end
+
+  after_commit { ParticipantMailer.join_email(self).deliver }
 end
