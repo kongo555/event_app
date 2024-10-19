@@ -5,3 +5,7 @@ not_full:
   start_at: 2024-10-19 07:29:42
   capacity: 10
 
+full:
+  name: MyString
+  start_at: 2024-10-19 07:29:42
+  capacity: 0

@@ -1,6 +1,6 @@
 class V1::EventsController < ApplicationController
   skip_before_action :authenticate_devise_api_token!, only: :index
-  before_action :set_event, only: %i[ show update destroy ]
+  before_action :set_event, only: %i[ update destroy ]
   before_action :check_if_admin, except: :index
 
   # GET /events
@@ -12,7 +12,8 @@ class V1::EventsController < ApplicationController
 
   # GET /events/1
   def show
-    render json: @event
+    @event = Event.includes(:users).find(params[:id])
+    render json: @event.to_json(include: :users)
   end
 
   # POST /events

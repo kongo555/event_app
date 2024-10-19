@@ -9,3 +9,9 @@ admin:
   access_token: <%= SecureRandom.hex(32) %>
   refresh_token: <%= SecureRandom.hex(32) %>
   expires_in: <%= 1.hour.to_i %>
+
+free:
+  resource_owner: free (User)
+  access_token: <%= SecureRandom.hex(32) %>
+  refresh_token: <%= SecureRandom.hex(32) %>
+  expires_in: <%= 1.hour.to_i %>

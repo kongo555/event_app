@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_19_071900) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_19_073326) do
   create_table "devise_api_tokens", force: :cascade do |t|
     t.string "resource_owner_type", null: false
     t.bigint "resource_owner_id", null: false
@@ -35,6 +35,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_19_071900) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "participants", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_participants_on_event_id"
+    t.index ["user_id", "event_id"], name: "index_participants_on_user_id_and_event_id", unique: true
+    t.index ["user_id"], name: "index_participants_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -44,4 +54,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_19_071900) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "participants", "events"
+  add_foreign_key "participants", "users"
 end

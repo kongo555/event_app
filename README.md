@@ -124,7 +124,16 @@ curl --location --request GET 'http://127.0.0.1:3000/v1/events/1' \
     "start_at":"2000-01-01T05:50:58.587Z",
     "capacity":10,
     "created_at":"2024-10-19T05:50:58.594Z",
-    "updated_at":"2024-10-19T05:50:58.594Z"
+    "updated_at":"2024-10-19T05:50:58.594Z",
+    "users":[
+        {
+            "id":2,
+            "email":"test2@mail.com",
+            "created_at":"2024-10-19T07:42:55.819Z",
+            "updated_at":"2024-10-19T07:42:55.819Z",
+            "admin":false
+        }
+    ]
 }
 ```
 
@@ -227,5 +236,63 @@ curl --location --request DELETE 'http://127.0.0.1:3000/v1/events/1' \
     "capacity":10,
     "created_at":"2024-10-19T05:50:58.594Z",
     "updated_at":"2024-10-19T05:50:58.594Z"
+}
+```
+
+## List all events that user has joined
+`GET v1/participants`
+
+### Authorization
+not needed
+
+### Body
+empty
+
+### Example
+```
+# Request
+curl --location --request GET 'http://127.0.0.1:3000/v1/participants' \
+--header 'Authorization: Bearer <access_token>'
+
+# Response
+[
+    {
+        "id":1,
+        "name":"Event",
+        "start_at":"2024-10-22T07:42:55.823Z",
+        "capacity":10,
+        "created_at":"2024-10-19T07:42:55.830Z",
+        "updated_at":"2024-10-19T07:42:55.830Z"
+    }
+]
+```
+
+## Join event
+`POST v1/participants/{event_id}`
+
+### Authorization
+not needed
+
+### Body
+empty
+
+### Example
+```
+# Request
+curl --location --request POST 'http://127.0.0.1:3000/v1/participants' \
+--header 'Authorization: Bearer <access_token>' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "id": "1"
+}'
+
+# Response
+{
+    "id":1,
+    "name":"Event",
+    "start_at":"2024-10-22T07:42:55.823Z",
+    "capacity":10,
+    "created_at":"2024-10-19T07:42:55.830Z",
+    "updated_at":"2024-10-19T07:42:55.830Z"
 }
 ```

@@ -35,6 +35,7 @@ class V1::EventsControllerTest < ActionDispatch::IntegrationTest
       as: :json
     assert_response :success
     assert_equal response.parsed_body[:name], @event.name
+    assert_equal response.parsed_body[:users].size, @event.users.count
   end
 
   test "should create event" do

@@ -1,0 +1,16 @@
+class V1::ParticipantsController < ApplicationController
+  def index
+    render json: current_user.events
+  end
+
+  def create
+    @event = Event.find(params[:id])
+    @participant = Participant.new(event: @event, user: current_user)
+
+    if @participant.save
+      render json: @event, status: :created, location: v1_events_url(@event)
+    else
+      render json: @participant.errors, status: :unprocessable_entity
+    end
+  end
+end

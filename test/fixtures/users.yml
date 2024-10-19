@@ -4,3 +4,6 @@ user:
 admin:
   email: admin@mail.com
   admin: true
+
+free:
+  email: free@mail.com
